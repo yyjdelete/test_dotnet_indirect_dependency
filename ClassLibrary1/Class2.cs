@@ -7,9 +7,14 @@ namespace ClassLibrary1
     {
         public void Test() => Test2();
 
-        private SqlConnection Test2()
+        public SqlConnection Test2()
         {
-            return new ClassLibrary2.Class2().Test();
+            return new SqlConnection();
+        }
+
+        public void Test3()
+        {
+            new ClassLibrary2.Class2().Test();
         }
     }
 }

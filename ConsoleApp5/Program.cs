@@ -4,31 +4,28 @@ namespace ConsoleApp5
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Test(Action action, string name)
         {
             try
             {
-                new ClassLibrary1.Class1().Test();
-                Console.WriteLine("Class1 is OK");
+                action();
+                Console.WriteLine(name + " is OK");
             }
             catch (Exception ex)
             {
-                Console.Error.WriteLine("***Class1 is FAILED->" + ex);
+                Console.Error.WriteLine($"***{name} is FAILED->" + ex);
             }
 
             Console.WriteLine();
             Console.WriteLine("----------");
             Console.WriteLine();
+        }
 
-            try
-            {
-                new ClassLibrary1.Class2().Test();
-                Console.WriteLine("Class2 is OK");
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine("***Class2 is FAILED->" + ex);
-            }
+        static void Main(string[] args)
+        {
+            Test(() => new ClassLibrary1.Class2().Test(), "Test");
+            //Test(() => new ClassLibrary1.Class2().Test2(), "Test2");
+            Test(() => new ClassLibrary1.Class2().Test3(), "Test3");
         }
     }
 }
